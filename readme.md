@@ -1,6 +1,7 @@
-# Investment Calculator 🚩
+# CLI Movie App 🚩
 
 A Movie CLI App (No Web) based on "Java: trabalhando com lambdas, streams e Spring Framework" course
+
 ## Objective 📜
 
 Create a CLI movie app using spring
