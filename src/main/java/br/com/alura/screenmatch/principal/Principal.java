@@ -185,8 +185,10 @@ public class Principal {
         System.out.println("Deseja buscar séries com até qual quantidade máxima de temporadas ?");
         var numeroTemporadas = leitura.nextInt();
         leitura.nextLine();
-        List<Serie> listaNumeroMaxTemporadas = repositorio.findByTotalTemporadasLessThanEqual(numeroTemporadas);
-        listaNumeroMaxTemporadas.forEach(s -> System.out.println(s.getTitulo() + " Total de temporadas: " + s.getTotalTemporadas()));
+        System.out.println("E você quer séries a partir de qual nota ?");
+        var avaliaco = leitura.nextDouble();
+        List<Serie> listaNumeroMaxTemporadas = repositorio.findByTotalTemporadasLessThanEqualAndAvaliacaoGreaterThanEqual(numeroTemporadas, avaliaco);
+        listaNumeroMaxTemporadas.forEach(s -> System.out.println(s.getTitulo() + " Total de temporadas: " + s.getTotalTemporadas() + " Avaliação: " + s.getAvaliacao()));
     }
 
 }
