@@ -37,6 +37,7 @@ public class Principal {
                 5 - Buscar séries por ator
                 6 - Top 5 Séries
                 7 - Buscar séries por categoria
+                8 - Buscar séries por número de temporadas
                 
                 0 - Sair
                 """;
@@ -66,6 +67,9 @@ public class Principal {
                     break;
                 case 7:
                     buscarSeriesPorCategoria();
+                    break;
+                case 8:
+                    buscarSeriesPorNumeroTemporadas();
                     break;
                 case 0:
                     System.out.println("Saindo...");
@@ -168,13 +172,21 @@ public class Principal {
     }
 
     private void buscarSeriesPorCategoria() {
-        System.out.println("Deseja biscar séries de que categoria / gênero ?");
+        System.out.println("Deseja buscar séries de que categoria / gênero ?");
         var nomeGenero = leitura.nextLine();
         Categoria categoria = Categoria.fromPortugues(nomeGenero);
 
         List<Serie> seriesPorCategoria = repositorio.findByGenero(categoria);
         System.out.println("Séries da categoria " + nomeGenero);
         seriesPorCategoria.forEach(System.out::println);
+    }
+
+    private void buscarSeriesPorNumeroTemporadas() {
+        System.out.println("Deseja buscar séries com até qual quantidade máxima de temporadas ?");
+        var numeroTemporadas = leitura.nextInt();
+        leitura.nextLine();
+        List<Serie> listaNumeroMaxTemporadas = repositorio.findByTotalTemporadasLessThanEqual(numeroTemporadas);
+        listaNumeroMaxTemporadas.forEach(s -> System.out.println(s.getTitulo() + " Total de temporadas: " + s.getTotalTemporadas()));
     }
 
 }
